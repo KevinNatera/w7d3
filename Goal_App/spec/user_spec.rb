@@ -25,7 +25,15 @@ RSpec.describe User, type: :model do
         end
     end
 
+    describe 'reset_session_token!' do 
+        let!(:user) { FactoryBot.create(:user)}
+        let!(:old_token) {user.session_token}
 
+        it 'should reset the user''s session token ' do 
+            expect(user.reset_session_token!).not_to eq(:old_token)
+        end
+
+    end
 
 
 
